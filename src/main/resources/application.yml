@@ -1,0 +1,25 @@
+camel:
+  springboot:
+    main-run-controller: true
+
+sap:
+  connection:
+    gwhost: qukeccdb01.uk.oup.com
+    gwserv: sapgw00
+    progid: R3Q_CEVA_INBOUND
+    client: 10
+    user: CEVAUKIDOC
+    passwd: Cevaint@11
+    lang: EN
+    group: R3QSAP
+    mshost: qukeccsc01.uk.oup.com
+    msserv: 3600
+    r3name: R3Q
+    connectionCount: 2
+    recipientPort: SAPR3Q
+    recipientPartnerNumber: CEVA_INDEL
+    senderPort: CEVA_INB
+    senderPartnerNumber: DISPATCHER
+    idocType: DELVRY03
+    messageType: WHSCON
+    endpoint: sap-idoc-destination:sapukDestination:DELVRY03
