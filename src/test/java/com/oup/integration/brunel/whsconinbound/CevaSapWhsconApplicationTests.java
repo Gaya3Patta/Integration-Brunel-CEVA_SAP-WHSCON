@@ -1,10 +1,10 @@
-package com.oup.integration.brunel.ismmatmasinbound;
+package com.oup.integration.brunel.whsconinbound;
 
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CevaSapIsmMatmasApplicationTests {
+class CevaSapWhsconApplicationTests {
 
 	@Test
 	void contextLoads() {
