@@ -73,7 +73,7 @@ public class AppConfig {
 	}
 	
 	//  Configures an Inbound SAP Connection
-	@Bean(name= "sapukDestination")
+	@Bean(name= "sapInDestination")
 	public DestinationDataImpl quickstartDestConfig() {
 		DestinationDataImpl impl = new DestinationDataImpl();
 		impl.setClient(client);
@@ -100,10 +100,10 @@ public class AppConfig {
 	}
 	
 	@Bean(name = "sap-configuration")
-	public org.fusesource.camel.component.sap.SapConnectionConfiguration camelSapConnectionConfiguration(@Qualifier("sapukDestination") DestinationDataImpl ddi, @Qualifier("sapukServer") ServerDataImpl sdsi) {
+	public org.fusesource.camel.component.sap.SapConnectionConfiguration camelSapConnectionConfiguration(@Qualifier("sapInDestination") DestinationDataImpl ddi, @Qualifier("sapukServer") ServerDataImpl sdsi) {
 		org.fusesource.camel.component.sap.SapConnectionConfiguration scc = new org.fusesource.camel.component.sap.SapConnectionConfiguration();
 		Map<String, DestinationData> destinationData = new HashMap<>();
-		destinationData.put("sapukDestination", ddi);
+		destinationData.put("sapInDestination", ddi);
 		scc.setDestinationDataStore(destinationData);
 		Map<String, ServerData> destinationServer = new HashMap<>();
 		destinationServer.put("sapukServer", sdsi);

@@ -12,7 +12,7 @@ target/
 .settings
 .springBeans
 .sts4-cache
-inbox
+inbox*
 outbox
 *.mdmp
 
@@ -34,3 +34,6 @@ build/
 
 ### VS Code ###
 .vscode/
+dev_jco_rfc.trc
+plant*
+backup

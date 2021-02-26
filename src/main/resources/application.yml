@@ -1,6 +1,81 @@
 camel:
   springboot:
     main-run-controller: true
+spring:
+  profiles:
+    active: default
+  application:
+    name: Integration-Brunel-CEVA_SAP-WHSCON
+
+ftp:
+  ceva:
+    server: ukftp-auto.oup.com
+    pickuplocation: 
+      plant1: to_OUP/plant_7410/RECADV
+      plant2: to_OUP/plant_7430/RECADV
+    port: 22
+    username: brunel_test_OUP
+    password: RAW(!D9ElUcMktDLIqd&J^6Ye)
+    fileFilter: cevaextract_*.xml
+    ftpOptions: username=${ftp.ceva.username}&password=${ftp.ceva.password}&antInclude=${ftp.ceva.fileFilter}&useUserKnownHostsFile=false&delete=true&sortBy=file:modified
+    sftpPathPlant1: file:plant_7410
+    sftpPathPlant2: file:plant_7430
+    # sftpPathPlant1: sftp:{{ftp.ceva.server}}:{{ftp.ceva.port}}/{{ftp.ceva.pickuplocation.plant1}}?{{ftp.ceva.ftpOptions}}
+    # sftpPathPlant2: sftp:{{ftp.ceva.server}}:{{ftp.ceva.port}}/{{ftp.ceva.pickuplocation.plant2}}?{{ftp.ceva.ftpOptions}}
+
+sap:
+  connection:
+    gwhost: indsapqas.in.oup.com
+    gwserv: sapgw00
+    progid: INQ_BRUNEL_INBOUND
+    client: 74
+    user: CHINTHAR
+    passwd: Sainath-3
+    lang: EN
+    group: 
+    mshost: indsapqas.in.oup.com
+    msserv: 3601
+    r3name: INQ
+    connectionCount: 2
+    recipientPort: SAPINQ
+    recipientPartnerNumber: CEVA_INDEL
+    senderPort: BRUNEL_INBOUND
+    senderPartnerNumber: DISPATCHER
+    idocType: DELVRY03
+    messageType: WHSCON
+    # endpoint: sap-idoc-destination:sapInDestination:DELVRY03
+    endpoint: file:outbox
+
+file:
+  location: backup
+  # location: /OUT/${spring.application.name}
+  XML: 
+    name: CEVA-RECADV-$simple{header.InterChangeID}_$simple{header.OrderID}.xml
+    backup: file:${file.location}/01-FromCEVA/$simple{date:now:yyyy/MM/dd}
+  IDOC: 
+    name: SAP-WHSCON-$simple{header.InterChangeID}_$simple{header.OrderID}.xml
+    backup: file:${file.location}/02-ToSAP/$simple{date:now:yyyy/MM/dd}
+
+---
+
+spring:
+  profiles: dev
+
+ftp:
+  ceva:
+    server: ukftp-auto.oup.com
+    pickuplocation: 
+      plant1: to_OUP/plant_7410/RECADV
+      plant2: to_OUP/plant_7430/RECADV
+    port: 22
+    username: brunel_test_OUP
+    password: RAW(!D9ElUcMktDLIqd&J^6Ye)
+    fileFilter: cevaextract_*.xml
+    ftpOptions: username=${ftp.ceva.username}&password=${ftp.ceva.password}&antInclude=${ftp.ceva.fileFilter}&useUserKnownHostsFile=false&delete=true&sortBy=file:modified
+    sftpPathPlant1: file:plant_7410
+    sftpPathPlant2: file:plant_7430
+    # sftpPathPlant1: sftp:{{ftp.ceva.server}}:{{ftp.ceva.port}}/{{ftp.ceva.pickuplocation.plant1}}?{{ftp.ceva.ftpOptions}}
+    # sftpPathPlant2: sftp:{{ftp.ceva.server}}:{{ftp.ceva.port}}/{{ftp.ceva.pickuplocation.plant2}}?{{ftp.ceva.ftpOptions}}
 
 sap:
   connection:
@@ -23,3 +98,12 @@ sap:
     idocType: DELVRY03
     messageType: WHSCON
     endpoint: sap-idoc-destination:sapukDestination:DELVRY03
+
+file:
+  location: /OUT/${spring.application.name}
+  XML: 
+    name: CEVA-RECADV-$simple{header.InterChangeID}_$simple{header.OrderID}.xml
+    backup: file:${file.location}/01-FromCEVA/$simple{date:now:yyyy/MM/dd}
+  IDOC: 
+    name: SAP-WHSCON-$simple{header.InterChangeID}_$simple{header.OrderID}.xml
+    backup: file:${file.location}/02-ToSAP/$simple{date:now:yyyy/MM/dd}
