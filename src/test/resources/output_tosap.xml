@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idoc:Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:idoc="http://sap.fusesource.org/idoc"
+               xmlns:DELVRY03---="http://sap.fusesource.org/idoc/INQ/DELVRY03///"
+               client="74"
+               creationDate="2021-02-27T00:58:40.139843+05:30"
+               creationTime="2021-02-27T00:58:40.139843+05:30"
+               iDocType="DELVRY03"
+               iDocTypeExtension=""
+               messageType="WHSCON"
+               recipientPartnerNumber="CEVA_INDEL"
+               recipientPartnerType="LS"
+               recipientPort="SAPINQ"
+               senderPartnerNumber="DISPATCHER"
+               senderPartnerType="LS"
+               senderPort="BRUNEL_INBOUND">
+   <rootSegment xsi:type="DELVRY03---:ROOT" document="/">
+      <segmentChildren parent="//@rootSegment">
+         <E1EDL20 parent="//@rootSegment"
+                  document="/"
+                  VBELN="4100078155"
+                  BOLNR="R33836">
+            <segmentChildren parent="//@rootSegment/@segmentChildren/@E1EDL20.0">
+               <E1EDL18 parent="//@rootSegment/@segmentChildren/@E1EDL20.0"
+                        document="/"
+                        QUALF="PIC"/>
+               <E1EDL18 parent="//@rootSegment/@segmentChildren/@E1EDL20.0"
+                        document="/"
+                        QUALF="PGI"/>
+               <E1EDT13 parent="//@rootSegment/@segmentChildren/@E1EDL20.0"
+                        document="/"
+                        QUALF="010"
+                        NTANF="2021-02-27T00:58:40.139843+05:30"
+                        NTANZ="2021-02-27T00:58:40.139843+05:30"/>
+               <E1EDL24 parent="//@rootSegment/@segmentChildren/@E1EDL20.0"
+                        document="/"
+                        POSNR="1000"
+                        MATNR="02455-00000-08"
+                        WERKS="NL-VEN-03"
+                        LGORT="XXX999"
+                        LFIMG="60"
+                        VRKME="EA"
+                        VGBEL="4100078155"
+                        VGPOS="000001"/>
+               <E1EDL24 parent="//@rootSegment/@segmentChildren/@E1EDL20.0"
+                        document="/"
+                        POSNR="2000"
+                        MATNR="73233-00038-02"
+                        WERKS="NL-VEN-03"
+                        LGORT="XXX999"
+                        LFIMG="6"
+                        VRKME="EA"
+                        VGBEL="4100078155"
+                        VGPOS="000002"/>
+            </segmentChildren>
+         </E1EDL20>
+      </segmentChildren>
+   </rootSegment>
+</idoc:Document>
