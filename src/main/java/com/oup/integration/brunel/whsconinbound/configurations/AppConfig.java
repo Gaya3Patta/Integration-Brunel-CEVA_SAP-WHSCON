@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.camel.CamelContext;
+import org.apache.camel.impl.DefaultUuidGenerator;
 import org.apache.camel.spring.boot.CamelContextConfiguration;
 import org.fusesource.camel.component.sap.CurrentProcessorDefinitionInterceptStrategy;
 import org.fusesource.camel.component.sap.model.rfc.DestinationData;
@@ -23,7 +24,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 public class AppConfig {
 	
-	protected Logger log = LoggerFactory.getLogger(getClass());
+	final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@Value("${sap.connection.client}")
 	private String client;
@@ -55,12 +56,12 @@ public class AppConfig {
 		return new CamelContextConfiguration() {
 			@Override
 			public void beforeApplicationStart(CamelContext context) {
-				//beforeApplicationStart
+				// beforeApplicationStart
 			}
 
 			@Override
 			public void afterApplicationStart(CamelContext camelContext) {
-				//afterApplicationStart
+				// afterApplicationStart
 			}
 		};
 	}
@@ -72,9 +73,14 @@ public class AppConfig {
 		return new CurrentProcessorDefinitionInterceptStrategy();
 	}
 	
+	@Bean(name="uuidGenerator")
+	public DefaultUuidGenerator getUuidGenerator() {
+		return new DefaultUuidGenerator();
+	}
+	
 	//  Configures an Inbound SAP Connection
-	@Bean(name= "sapInDestination")
-	public DestinationDataImpl quickstartDestConfig() {
+	@Bean(name = "sapInbound")
+	public DestinationDataImpl sapInboundConfig() {
 		DestinationDataImpl impl = new DestinationDataImpl();
 		impl.setClient(client);
 		impl.setUser(user);
@@ -88,25 +94,25 @@ public class AppConfig {
 	}
 	
 	//  Configures an Outbound SAP Connection
-	@Bean(name = "sapukServer")
-	public ServerDataImpl quickstartServerDataImplConfig() {
+	@Bean(name = "sapOutbound")
+	public ServerDataImpl sapOutboundDataImplConfig() {
 		ServerDataImpl impl = new ServerDataImpl();
 		impl.setGwhost(gwhost);
 		impl.setGwserv(gwserv);
 		impl.setProgid(progid);
 		impl.setConnectionCount(connectionCount);
-		impl.setRepositoryDestination("quickstartDest");
+		impl.setRepositoryDestination("sapInbound");
 		return impl;
 	}
 	
 	@Bean(name = "sap-configuration")
-	public org.fusesource.camel.component.sap.SapConnectionConfiguration camelSapConnectionConfiguration(@Qualifier("sapInDestination") DestinationDataImpl ddi, @Qualifier("sapukServer") ServerDataImpl sdsi) {
+	public org.fusesource.camel.component.sap.SapConnectionConfiguration camelSapConnectionConfiguration(@Qualifier("sapInbound") DestinationDataImpl ddi, @Qualifier("sapOutbound") ServerDataImpl sdsi) {
 		org.fusesource.camel.component.sap.SapConnectionConfiguration scc = new org.fusesource.camel.component.sap.SapConnectionConfiguration();
 		Map<String, DestinationData> destinationData = new HashMap<>();
-		destinationData.put("sapInDestination", ddi);
+		destinationData.put("sapInbound", ddi);
 		scc.setDestinationDataStore(destinationData);
 		Map<String, ServerData> destinationServer = new HashMap<>();
-		destinationServer.put("sapukServer", sdsi);
+		destinationServer.put("sapOutbound", sdsi);
 		scc.setServerDataStore(destinationServer);
 		return scc;
 	}

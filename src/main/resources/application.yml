@@ -25,26 +25,26 @@ ftp:
 
 sap:
   connection:
-    gwhost: indsapqas.in.oup.com
+    gwhost: indsapdev.in.oup.com
     gwserv: sapgw00
     progid: INQ_BRUNEL_INBOUND
-    client: 74
+    client: 21
     user: CHINTHAR
     passwd: Sainath-3
     lang: EN
     group: 
-    mshost: indsapqas.in.oup.com
-    msserv: 3601
-    r3name: INQ
+    mshost: 10.45.6.7
+    msserv: 3600
+    r3name: IND
     connectionCount: 2
-    recipientPort: SAPINQ
+    recipientPort: SAPIND
     recipientPartnerNumber: CEVA_INDEL
     senderPort: BRUNEL_INBOUND
     senderPartnerNumber: DISPATCHER
     idocType: DELVRY03
     messageType: WHSCON
-    # endpoint: sap-idoc-destination:sapInDestination:DELVRY03
-    endpoint: file:outbox
+    endpoint: sap-idoc-destination:sapInbound:DELVRY03
+    # endpoint: file:outbox
 
 file:
   location: backup
