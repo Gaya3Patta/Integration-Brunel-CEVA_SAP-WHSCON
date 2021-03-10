@@ -79,25 +79,25 @@ ftp:
 
 sap:
   connection:
-    gwhost: qukeccdb01.uk.oup.com
+    gwhost: indsapdev.in.oup.com
     gwserv: sapgw00
-    progid: R3Q_CEVA_INBOUND
-    client: 10
-    user: CEVAUKIDOC
-    passwd: Cevaint@11
+    progid: INQ_BRUNEL_INBOUND
+    client: 21
+    user: PATHAKS
+    passwd: Spathak@1*
     lang: EN
-    group: R3QSAP
-    mshost: qukeccsc01.uk.oup.com
+    group: 
+    mshost: 10.45.6.7
     msserv: 3600
-    r3name: R3Q
+    r3name: IND
     connectionCount: 2
-    recipientPort: SAPR3Q
+    recipientPort: SAPIND
     recipientPartnerNumber: CEVA_INDEL
-    senderPort: CEVA_INB
+    senderPort: BRUNEL_INBOUND
     senderPartnerNumber: DISPATCHER
     idocType: DELVRY03
     messageType: WHSCON
-    endpoint: sap-idoc-destination:sapukDestination:DELVRY03
+    endpoint: sap-idoc-destination:sapInbound:DELVRY03
 
 file:
   location: /OUT/${spring.application.name}
