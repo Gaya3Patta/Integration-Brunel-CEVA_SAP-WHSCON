@@ -83,8 +83,8 @@ sap:
     gwserv: sapgw00
     progid: INQ_BRUNEL_INBOUND
     client: 21
-    user: PATHAKS
-    passwd: Spathak@1*
+    user: CHINTHAR
+    passwd: Sainath-3
     lang: EN
     group: 
     mshost: 10.45.6.7
