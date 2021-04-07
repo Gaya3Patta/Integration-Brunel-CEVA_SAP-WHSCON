@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.oup.integration.brunel</groupId>
-	<artifactId>whscon-inbound</artifactId>
+	<artifactId>whscon-shpcon-inbound</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Integration-Brunel-CEVA_SAP-WHSCON</name>
-	<description>CEVA RECADV to SAP WHSCON</description>
+	<name>Integration-Brunel-CEVA_SAP-WHSCON_SHPCON</name>
+	<description>CEVA RECADV to SAP WHSCON/SHPCON</description>
 	<properties>
 		<java.version>1.8</java.version>
 		<camel.version>2.25.1</camel.version>

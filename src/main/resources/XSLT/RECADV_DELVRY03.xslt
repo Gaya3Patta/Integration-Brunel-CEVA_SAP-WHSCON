@@ -36,9 +36,11 @@
 						VBELN="{OrderHeader/OrderID}" BOLNR="R33836">
 						<segmentChildren
 							parent="//@rootSegment/@segmentChildren/@E1EDL20.0">
-							<E1EDL18
-								parent="//@rootSegment/@segmentChildren/@E1EDL20.0" document="/"
-								QUALF="PIC" />
+							<xsl:if test="$messageType='WHSCON'">
+								<E1EDL18
+									parent="//@rootSegment/@segmentChildren/@E1EDL20.0" document="/"
+									QUALF="PIC" />
+							</xsl:if>
 							<E1EDL18
 								parent="//@rootSegment/@segmentChildren/@E1EDL20.0" document="/"
 								QUALF="PGI" />

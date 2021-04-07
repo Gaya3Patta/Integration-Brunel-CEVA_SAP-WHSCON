@@ -1,4 +1,4 @@
-package com.oup.integration.brunel.whsconinbound.configurations;
+package com.oup.integration.brunel.whsconshpconinbound.configurations;
 
 import java.util.HashMap;
 import java.util.Map;

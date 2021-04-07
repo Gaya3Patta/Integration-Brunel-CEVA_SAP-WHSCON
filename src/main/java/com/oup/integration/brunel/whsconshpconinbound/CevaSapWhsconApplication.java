@@ -1,4 +1,4 @@
-package com.oup.integration.brunel.whsconinbound;
+package com.oup.integration.brunel.whsconshpconinbound;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

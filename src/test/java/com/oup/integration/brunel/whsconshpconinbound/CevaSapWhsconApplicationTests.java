@@ -1,14 +1,12 @@
-package com.oup.integration.brunel.whsconinbound;
+package com.oup.integration.brunel.whsconshpconinbound;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import com.oup.integration.brunel.whsconinbound.routes.CevaRecadvToSapWhsconRoute;
+import com.oup.integration.brunel.whsconshpconinbound.routes.CevaRecadvToSapDelvry03Route;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.EndpointInject;
@@ -47,7 +45,7 @@ public class CevaSapWhsconApplicationTests {
 
 	@Before
 	public void setup() throws Exception {
-		camelContext.getRouteDefinition(CevaRecadvToSapWhsconRoute.class.getSimpleName()).adviceWith(camelContext,
+		camelContext.getRouteDefinition(CevaRecadvToSapDelvry03Route.class.getSimpleName()).adviceWith(camelContext,
 				new AdviceWithRouteBuilder() {
 					@Override
 					public void configure() throws Exception {
